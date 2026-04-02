@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    /* Registration & Login */
+    char regName[20], regPass[20], rePass[20];
+    char logName[20], logPass[20];
+    long mobile;
+
+    /* Cookie */
+    char cookieUser[20];
+
+    /* Investment Variables */
+    char company[30];
+    float sharePrice, investment, profitRate, profit, finalAmount;
+    int risk, choice, shares, years, x;
+
+    char agree;
+    char again;   /* RECHECK OPTION */
+
+    /* ================= REGISTRATION ================= */
+    printf("----- REGISTRATION -----\n");
+
+    printf("Create Username (min 4 characters): ");
+    scanf("%s", regName);
+    if (strlen(regName) < 4) {
+        printf("Username too short!");
+        return 0;
+    }
+
+    printf("Enter Mobile Number (10 digits): ");
+    scanf("%ld", &mobile);
+    
+
+    printf("Create Password (min 6 characters): ");
+    scanf("%s", regPass);
+    if (strlen(regPass) < 6) {
+        printf("Password too short!");
+        return 0;
+    }
+
+    printf("Re-enter Password: ");
+    scanf("%s", rePass);
+    if (strcmp(regPass, rePass) != 0) {
+        printf("Passwords do not match!");
+        return 0;
+    }
+
+    printf("\nRegistration Successful!\n");
+
+    /* ================= LOGIN ================= */
+    printf("\n----- LOGIN -----\n");
+    printf("Enter Username: ");
+    scanf("%s", logName);
+
+    printf("Enter Password: ");
+    scanf("%s", logPass);
+
+    if (strcmp(regName, logName) != 0 || strcmp(regPass, logPass) != 0) {
+        printf("Login Failed! Invalid credentials.");
+        return 0;
+    }
+
+    printf("Login Successful!\n");
+
+    strcpy(cookieUser, logName);
+
+    do {
+        /* ================= ENTER AMOUNT ================= */
+        printf("\nEnter Investment Amount: ");
+        scanf("%f", &investment);
+
+        /* ================= RISK SELECTION ================= */
+        printf("\nSelect Risk Type:\n");
+        printf("1. Low Risk\n2. Medium Risk\n3. High Risk\n");
+        printf("Enter choice: ");
+        scanf("%d", &risk);
+
+        if (risk == 1) {
+            printf("\nLow Risk Companies:\n");
+            printf("1. TCS (3500)\n2. Infosys (1500)\n3. HDFC (1600)\n");
+            scanf("%d", &choice);
+
+            if (choice == 1) {
+                strcpy(company, "TCS");
+                sharePrice = 3500;
+            } else if (choice == 2) {
+                strcpy(company, "Infosys");
+                sharePrice = 1500;
+            } else {
+                strcpy(company, "HDFC");
+                sharePrice = 1600;
+            }
+            profitRate = 0.05;
+        }
+        else if (risk == 2) {
+            printf("\nMedium Risk Companies:\n");
+            printf("1. Tata Motors (800)\n2. Reliance (2500)\n3. ITC (450)\n");
+            scanf("%d", &choice);
+
+            if (choice == 1) {
+                strcpy(company, "Tata Motors");
+                sharePrice = 800;
+            } else if (choice == 2) {
+                strcpy(company, "Reliance");
+                sharePrice = 2500;
+            } else {
+                strcpy(company, "ITC");
+                sharePrice = 450;
+            }
+            profitRate = 0.10;
+        }
+        else if (risk == 3) {
+            printf("\nHigh Risk Companies:\n");
+            printf("1. Adani (3000)\n2. Zomato (200)\n3. Paytm (600)\n");
+            scanf("%d", &choice);
+
+            if (choice == 1) {
+                strcpy(company, "Adani");
+                sharePrice = 3000;
+            } else if (choice == 2) {
+                strcpy(company, "Zomato");
+                sharePrice = 200;
+            } else {
+                strcpy(company, "Paytm");
+                sharePrice = 600;
+            }
+            profitRate = 0.20;
+        }
+        else {
+            printf("Invalid Risk Selection!");
+            return 0;
+        }
+
+        shares = investment / sharePrice;
+
+        printf("\nEnter Investment Years: ");
+        scanf("%d", &years);
+
+        profit = investment * profitRate * years;
+        finalAmount = investment + profit;
+
+        printf("\n----- INVESTMENT SUMMARY -----\n");
+        printf("UserName : %s\n", cookieUser);
+        printf("Company Selected : %s\n", company);
+        printf("Share Price : %.2f\n", sharePrice);
+        printf("Investment Amount : %.2f\n", investment);
+        printf("No. of Shares : %d\n", shares);
+        printf("Profit : %.2f\n", profit);
+        printf("Final Amount : %.2f\n", finalAmount);
+
+        x = investment - (shares * sharePrice);
+        if (x != 0) {
+            printf("Leftover Amount : %d\n", x);
+        }
+
+        /* ================= RECHECK OPTION ================= */
+        printf("\nDo you want to invest again? (y/n): ");
+        scanf(" %c", &again);
+
+    } while (again == 'y' || again == 'Y');
+
+    /* ================= THANK YOU ================= */
+    printf("\n-----------------------------------------------\n");
+    printf("Thank you for using our Stock Market Calculator.\n");
+    printf("We wish you smart and successful investments!\n");
+    printf("-------------------------------------------------\n");
+
+    return 0;
+}

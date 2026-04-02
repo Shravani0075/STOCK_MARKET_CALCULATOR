@@ -1,0 +1,48 @@
+----- REGISTRATION -----
+Create Username (min 4 characters): Shravani@321
+Enter Mobile Number (10 digits): 8097546789
+Create Password (min 6 characters): stock_45
+Re-enter Password: stock_45
+
+Registration Successful!
+
+----- LOGIN -----
+Enter Username: Shravani@321
+Enter Password: stock_45
+Login Successful!
+
+Enter Investment Amount: 50000
+
+Select Risk Type:
+1. Low Risk
+2. Medium Risk
+3. High Risk
+Enter choice: 3
+
+High Risk Companies:
+1. Adani (3000)
+2. Zomato (200)
+3. Paytm (600)
+1
+
+Enter Investment Years: 30
+
+----- INVESTMENT SUMMARY -----
+UserName : Shravani@321
+Company Selected : Adani
+Share Price : 3000.00
+Investment Amount : 50000.00
+No. of Shares : 16
+Profit : 300000.00
+Final Amount : 350000.00
+Leftover Amount : 2000
+
+Do you want to invest again? (y/n): n
+
+-----------------------------------------------
+Thank you for using our Stock Market Calculator.
+We wish you smart and successful investments!
+-------------------------------------------------
+
+
+=== Code Execution Successful ===
